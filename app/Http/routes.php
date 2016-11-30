@@ -11,6 +11,10 @@
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-});
+Route::get('/', ['uses' => 'HomePageController@goToHomePage']);
+
+Route::get('/home', ['as' => 'homeRoute', 'uses' => 'HomePageController@goToHomePage']);
+
+Route::get('/chat', ['as' => 'chatRoute', 'uses' => 'ChatController@goToMainChat']);
+
+Route::resource('/chat/creation', 'RoomCreationController');
